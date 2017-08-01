@@ -53,6 +53,20 @@ class GameView {
       $('#game-over').hide();
       this.game.mainAudio.load();
     });
-
+    $('html').keydown(event => {
+      if (event.which == 80) {
+        this.paused = !this.paused;
+        if (this.paused) {
+          $('#pause').show();
+          $('#restart').show();
+          this.game.mainAudio.pause();
+          this.pauseAudio.play();
+        } else {
+          $('#pause').hide();
+          $('#restart').hide();
+          this.game.mainAudio.play();
+        }
+      }
+    });
   }
 }
