@@ -37,6 +37,13 @@ In addition to the webpack entry file, there will be four scripts involved in th
 `milk_glass.js`: extends moving_object.js.
 
 
+## Wireframes
+
+Intro/Instruction Page: https://www.draw.io/#G0BwEeuTLQCw86RXh5UUJWTW1wNTQ
+
+Gameplay Page: https://www.draw.io/#G0BwEeuTLQCw86RUM1UkQxX1prZUk
+
+
 ## Implementation Timeline
 
 **Day 1**: Setup all necessary Node modules, including getting webpack up and running.  Create `webpack.config.js` as well as `package.json`.  Write a basic entry file and the bare bones of all scripts outlined above. Do some researches how to create animation with sprites. Goals for the day:
