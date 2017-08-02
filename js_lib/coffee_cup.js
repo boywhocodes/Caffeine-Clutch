@@ -10,7 +10,7 @@ const DEFAULTS = {
 class CoffeeCup extends MovingObject {
   constructor(options = {}) {
     options.img = new Image();
-    // options.img.src = 'sprites/coffee_cup.png'
+    options.img.src = 'pics/coffee_pot.png'
     options.color = DEFAULTS.COLOR;
     options.pos = options.pos || options.game.beverageClouds[0].pos;
     options.radius = DEFAULTS.RADIUS;
@@ -20,8 +20,8 @@ class CoffeeCup extends MovingObject {
         this.isWrappable = false;
         this.startTime = 0;
         this.emptyCoffeeCup = new Image();
-        // this.emptyCoffeeCup.src = 'sprites/empty_coffee_cup.png';
-        this.coffeeCupAudio = new Audio('sounds/coffee_cup.wav');
+        this.emptyCoffeeCup.src = 'pics/white_mug.png';
+        this.coffeeCupAudio = new Audio('sounds/coffee_cup.mp3');
   }
 
   collideWith(otherObject) {

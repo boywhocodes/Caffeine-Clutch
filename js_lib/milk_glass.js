@@ -11,7 +11,7 @@ const DEFAULTS = {
 class MilkGlass extends MovingObject {
   constructor(options = {}) {
     options.img = new Image();
-    // options.img.src = 'sprites/milk_glass.png';
+    options.img.src = 'pics/milk.png';
     options.pos = options.pos || options.game.beverageClouds[0].pos;
     options.radius = DEFAULTS.RADIUS;
     options.vel = options.vel || Util.randomVec(DEFAULTS.SPEED);
@@ -20,7 +20,7 @@ class MilkGlass extends MovingObject {
         this.isWrappable = false;
         this.startTime = 0;
         this.emptyCoffeeCup = new Image();
-        // this.emptyCoffeeCup.src = 'sprites/empty_coffee_cup.png';
+        this.emptyCoffeeCup.src = 'sprites/white_mug.png';
         this.bumpAudio = new Audio('sounds/bump.wav');
   }
 
