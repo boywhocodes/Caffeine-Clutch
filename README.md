@@ -39,9 +39,9 @@ In addition to the webpack entry file, there will be four scripts involved in th
 
 ## Wireframes
 
-Intro/Instruction Page: https://www.draw.io/#G0BwEeuTLQCw86RXh5UUJWTW1wNTQ
+Intro/Instruction Page: https://user-images.githubusercontent.com/26631708/28854193-86421f78-76ea-11e7-9e99-47c1e35277a2.png
 
-Gameplay Page: https://www.draw.io/#G0BwEeuTLQCw86RUM1UkQxX1prZUk
+Gameplay Page: https://user-images.githubusercontent.com/26631708/28854110-f5fdcf02-76e9-11e7-8581-fa515c57d312.png
 
 
 ## Implementation Timeline
