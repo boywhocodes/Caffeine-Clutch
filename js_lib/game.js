@@ -60,7 +60,7 @@ class Game {
 
   addBeverageCloud() {
     const beverageCloud = new BeverageCloud({
-      pos: [600, 40]
+      pos: [600, 40],
       game: this
     });
     this.add(beverageCloud);
@@ -186,6 +186,7 @@ class Game {
       Util.wrap(pos[0], Game.DIM_X), Util.wrap(pos[1], Game.DIM_Y)
     ];
   }
+}
 
   Game.BG_COLOR = "#000000";
   Game.DIM_X = 1000;
@@ -198,7 +199,3 @@ class Game {
     'right': [6, 0]
   };
   module.exports = Game;
-
-
-
-}

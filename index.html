@@ -5,9 +5,32 @@
   </head>
 
   <body>
-    <div class="caffeine-clutch-group">
-
+    <div className="caffeine-clutch-group">
+      <img className="start-bg" src="sprites/start-bg.jpg"/>
+      <div className="intro">
+        <p className="intro-text">
+          Collect the coffee cups, stay caffeinated, become a software developer!  Avoid cups of warm milk! Otherwise you'll fall asleep and fall behind.  Always remember: time spent sleeping could be time spent coding.
+        Left Arrow  : Move Left<br/>
+        Right Arrow : Move Right<br/>
+        SPACE       : Jump<br/>
+        P           : Pause<br/>
+        Restart     : Restart the game<br/>
+        <br/>Click 'GO' to START!<br/>
+        </p>
+        <div className="game-canvas">
+          <canvas></canvas>
+        </div>
+        <div>
+          <img src='sprites/start.png' className="start-button">
+        </div>
+        <img src="sprites/gameover.png" className="game-over">
+        <img src="sprites/pause.png" className="pause">
+        <img src="sprites/restart.png" className="restart">
+      </div>
     </div>
+    <script src="lib/jquery.min.js"></script>
+    <script type="application/javascript" src="vendor/keymaster.js"></script>
+    <script type="application/javascript" src="vendor/input.js"></script>
+    <script type="application/javascript" src="vendor/bundle.js"></script>
   </body>
-
 </html>

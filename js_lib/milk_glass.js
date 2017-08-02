@@ -9,7 +9,7 @@ const DEFAULTS = {
 
 
 class MilkGlass extends MovingObject {
-  cosntructor(options = {}) {
+  constructor(options = {}) {
     options.img = new Image();
     // options.img.src = 'sprites/milk_glass.png';
     options.pos = options.pos || options.game.beverageClouds[0].pos;

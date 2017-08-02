@@ -3,10 +3,10 @@ var webpack = require("webpack");
 
 module.exports = {
   context: __dirname,
-  entry: "./lib/caffeine_clutch.js",
+  entry: "./js_lib/caffeine_clutch.js",
   output: {
     path: path.resolve(__dirname, 'js'),
-    filename: "./lib/bundle.js"
+    filename: "./js_lib/bundle.js"
   },
   module: {
     loaders: [
@@ -15,7 +15,7 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
-          presets: ['es2015', 'react']
+          presets: ['es2015']
         }
       }
     ]
