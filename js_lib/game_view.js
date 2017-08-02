@@ -184,6 +184,55 @@ class GameView {
     this.bevCloudL = new Image();
     this.bevCloudL.src = 'sprites/bevCloudL.png';
     this.bevCloudR = new Image();
-    this.bevCloudR.src
-  }
+    this.bevCloudR.src = 'sprites/bevCloudR.png';
+    let newVel = 2 * Math.random();
+    if (this.beverageCloud.pos[0] < 60 || this.beverageCloud.pos[0] > 900) {
+      this.beverageCloud.vel[0] = -this.beverageCloud.vel[0];
+    }
+    if (((time / 300) % 2) < 1) {
+      this.beverageCloud.vel[0] -= newVel;
+      if (this.beverageCloud.vel[0] > 15) {
+        this.beverageCloud.vel[0] -= newVel;
+      } else if (this.beverageCloud.vel[0] < -15) {
+        this.beverageCloud.vel[0] += newVel;
+      }
+    } else {
+      this.beverageCloud.vel[0] += newVel;
+      if (this.beverageCloud.vel[0] > 15) {
+        this.beverageCloud.vel[0] -= newVel;
+      } else if (this.beverageCloud.vel[0] < -15) {
+        this.beverageCloud.vel[0] += newVel;
+      }
+    }
+
+    if (this.beverageCloud.vel[0] < -2) {
+      this.beverageCloud.img = this.bevCloudL;
+    } else if (this.beverageCloud.vel[0] > 2) {
+      this.beverageCloud.img = this.bevCloudR;
+    }
 }
+
+    coffeeCupAnimate(time) {
+      let coffeeCups = this.game.coins;
+      let images = [];
+      for (let i = 1; i <= 10; i++) {
+        let coffeeCupImage = new Image();
+        coffeeCupImage.src = `sprites/coffeeCup${i}.png`;
+      }
+      coffeeCups.forEach(coffeeCup => {
+        let newIdx = Math.floor((time / 100) % 10);
+        coffeeCup.img = images[(coffeeCup.index + newIdx) % 10];
+      });
+    }
+
+    createCoffeeCups(time) {
+      let modTime = Math.floor((time / 10) % 300);
+      console.log(modTime, "modTime");
+      if (modTime === 25 || modTime === 26) {
+        this.game.addCoffeeCups();
+        this.game.addMilkGlasses();
+      }
+    }
+  }
+
+module.exports = GameView;
