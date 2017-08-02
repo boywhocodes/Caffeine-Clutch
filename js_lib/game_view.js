@@ -180,5 +180,10 @@ class GameView {
   }
 
 
-  
+  bevCloudAnimate(time) {
+    this.bevCloudL = new Image();
+    this.bevCloudL.src = 'sprites/bevCloudL.png';
+    this.bevCloudR = new Image();
+    this.bevCloudR.src
+  }
 }
