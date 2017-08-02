@@ -182,9 +182,9 @@ class GameView {
 
   bevCloudAnimate(time) {
     this.bevCloudL = new Image();
-    this.bevCloudL.src = 'sprites/bevCloudL.png';
+    this.bevCloudL.src = 'pics/bevCloudL.png';
     this.bevCloudR = new Image();
-    this.bevCloudR.src = 'sprites/bevCloudR.png';
+    this.bevCloudR.src = 'pics/bevCloudR.png';
     let newVel = 2 * Math.random();
     if (this.beverageCloud.pos[0] < 60 || this.beverageCloud.pos[0] > 900) {
       this.beverageCloud.vel[0] = -this.beverageCloud.vel[0];

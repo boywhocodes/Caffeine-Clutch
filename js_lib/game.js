@@ -7,8 +7,8 @@ const Coder = require("./coder");
 class Game {
   cosntructor() {
     this.highScore = 0;
-    // this.mainAudio = new Audio('sounds/__')
-    // this.dieAudio = new Audio('sounds/__')
+    this.mainAudio = new Audio('sounds/main-bg-sound.wav')
+    this.dieAudio = new Audio('sounds/game-over.wav')
     this.reset();
   }
 
@@ -90,7 +90,7 @@ class Game {
     ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
     ctx.font="30px Sans-serif";
     let bg = new Image();
-    // bg.src = 'sprites/bg.jpg'
+    bg.src = 'pics/start-bg.jpg'
     ctx.drawImage(bg, 0, 0);
 
     if (this.coders[0].coffeeCups > this.highScore) {
@@ -98,13 +98,13 @@ class Game {
     }
     ctx.fillText('High Score: ' + this.highScore,Game.DIM_X - 235, 30);
     let cofCupImg = new Image();
-    // cofCupImg.src = 'sprites/cof_cup.png'
+    cofCupImg.src = 'pics/coffee_pot.png'
     ctx.drawImage(cofCupImg, Game.DIM_X - 150, 45);
 
     ctx.fillText(' x ' + this.coders[0].coffeeCups,Game.DIM_X - 100, 80);
 
     let clockImg = new Image();
-    // clockImg.src = 'sprites/clock.png'
+    clockImg.src = 'pics/clock.png'
     ctx.drawImage(clockImg, 20, 0);
 
     this.remainTime = Math.round((gameLeftTime) * 100) / 100;

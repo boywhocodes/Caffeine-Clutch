@@ -109,8 +109,8 @@ var Game = function () {
     key: "cosntructor",
     value: function cosntructor() {
       this.highScore = 0;
-      // this.mainAudio = new Audio('sounds/__')
-      // this.dieAudio = new Audio('sounds/__')
+      this.mainAudio = new Audio('sounds/main-bg-sound.wav');
+      this.dieAudio = new Audio('sounds/game-over.wav');
       this.reset();
     }
   }, {
@@ -201,7 +201,7 @@ var Game = function () {
       ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
       ctx.font = "30px Sans-serif";
       var bg = new Image();
-      // bg.src = 'sprites/bg.jpg'
+      bg.src = 'pics/start-bg.jpg';
       ctx.drawImage(bg, 0, 0);
 
       if (this.coders[0].coffeeCups > this.highScore) {
@@ -209,13 +209,13 @@ var Game = function () {
       }
       ctx.fillText('High Score: ' + this.highScore, Game.DIM_X - 235, 30);
       var cofCupImg = new Image();
-      // cofCupImg.src = 'sprites/cof_cup.png'
+      cofCupImg.src = 'pics/coffee_pot.png';
       ctx.drawImage(cofCupImg, Game.DIM_X - 150, 45);
 
       ctx.fillText(' x ' + this.coders[0].coffeeCups, Game.DIM_X - 100, 80);
 
       var clockImg = new Image();
-      // clockImg.src = 'sprites/clock.png'
+      clockImg.src = 'pics/clock.png';
       ctx.drawImage(clockImg, 20, 0);
 
       this.remainTime = Math.round(gameLeftTime * 100) / 100;
@@ -836,7 +836,7 @@ var Coder = function (_MovingObject) {
     _classCallCheck(this, Coder);
 
     options.img = new Image();
-    // options.img.src = 'sprites/coder1.png';
+    options.img.src = 'pics/coder1.png';
     options.radius = Coder.RADIUS;
     options.vel = options.vel || [0, 0];
     options.color = options.color || randomColor();
@@ -1020,7 +1020,7 @@ var BeverageCloud = function (_MovingObject) {
 
     options.radius = BeverageCloud.RADIUS;
     options.img = new Image();
-    options.img.src = 'sprites/beverage_cloud.png';
+    options.img.src = 'pics/beverage_cloud.png';
     options.vel = options.vel || [-1, 0];
 
     var _this = _possibleConstructorReturn(this, (BeverageCloud.__proto__ || Object.getPrototypeOf(BeverageCloud)).call(this, options));
