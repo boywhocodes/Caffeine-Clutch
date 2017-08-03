@@ -16,7 +16,8 @@ function randomColor() {
 class Coder extends MovingObject {
   constructor(options) {
     options.img = new Image();
-    options.img.src = 'pics/coder1.png';
+    options.img.src = './pics/coder1.png';
+    console.log(options.img, "img");
     options.radius = Coder.RADIUS;
     options.vel = options.vel || [0,0];
     options.color = options.color || randomColor();

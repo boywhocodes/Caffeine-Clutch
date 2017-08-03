@@ -20,7 +20,7 @@ class MilkGlass extends MovingObject {
         this.isWrappable = false;
         this.startTime = 0;
         this.emptyCoffeeCup = new Image();
-        this.emptyCoffeeCup.src = 'sprites/white_mug.png';
+        this.emptyCoffeeCup.src = 'pics/white_mug.png';
         this.bumpAudio = new Audio('sounds/bump.wav');
   }
 

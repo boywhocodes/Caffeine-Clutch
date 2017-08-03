@@ -1,3 +1,5 @@
+// const Game = require("./game");
+
 class GameView {
   constructor(game, ctx) {
     this.ctx = ctx;
@@ -21,50 +23,50 @@ class GameView {
 
   bindKeyHandlers() {
     const coder = this.coder;
-    console.log(coder, "coder");
-    $(".start").click(() => {
+    // console.log(coder, "coder");
+    $("#start").click(() => {
       this.paused = false;
-      $('.start-bg').hide();
-      $('.start').hide();
-      $('.intro').hide();
-      $('.five-sec').hide();
-      $('.game-canvas').show();
-      this.game.mainAudio.play();
+      $('#start-bg').hide();
+      $('#start').hide();
+      $('#intro').hide();
+      $('#five-sec').hide();
+      $('#game-canvas').show();
+      // this.game.mainAudio.play();
     });
-    $('.restart').click(() => {
+    $('#restart').click(() => {
       this.reset();
-      $('.start-bg').show();
-      $('.start').show();
-      $('.intro').show();
-      $('.pause').hide();
-      $('.restart').hide();
-      $('.five-sec').hide();
-      $('.game-canvas').hide();
+      $('#start-bg').show();
+      $('#start').show();
+      $('#intro').show();
+      $('#pause').hide();
+      $('#restart').hide();
+      $('#five-sec').hide();
+      $('#game-canvas').hide();
       this.game.mainAudio.load();
     });
-    $('.game-over').click(() => {
+    $('#game-over').click(() => {
       this.reset();
-      $('.start-bg').show();
-      $('.start').show();
-      $('.intro').show();
-      $('.pause').hide();
+      $('#start-bg').show();
+      $('#start').show();
+      $('#intro').show();
+      $('#pause').hide();
       $('restart').hide();
-      $('.game-canvas').hide();
-      $('.five-sec').hide();
-      $('.game-over').hide();
+      $('#game-canvas').hide();
+      $('#five-sec').hide();
+      $('#game-over').hide();
       this.game.mainAudio.load();
     });
     $('html').keydown(event => {
       if (event.which == 80) {
         this.paused = !this.paused;
         if (this.paused) {
-          $('.pause').show();
-          $('.restart').show();
+          $('#pause').show();
+          $('#restart').show();
           this.game.mainAudio.pause();
           this.pauseAudio.play();
         } else {
-          $('.pause').hide();
-          $('.restart').hide();
+          $('#pause').hide();
+          $('#restart').hide();
           this.game.mainAudio.play();
         }
       }
@@ -98,7 +100,7 @@ class GameView {
     if (this.gameLeftTime < 0.01) {
       this.paused = true;
       this.game.mainAudio.load();
-      $('.game-over').show();
+      $('#game-over').show();
     }
   }
 
@@ -118,7 +120,7 @@ class GameView {
   }
 
   wakeUpCoder(timeDelta) {
-    console.log(wakeUpTime, "wakeUpTime");
+    console.log(this.wakeUpTime, "wakeUpTime");
     if (this.coder.bumped) {
       this.wakeUpTime += timeDelta;
     }
@@ -214,13 +216,14 @@ class GameView {
 }
 
     coffeeCupAnimate(time) {
-      let coffeeCups = this.game.coins;
+      let coffeeCups = this.game.coffeeCups;
       let images = [];
       for (let i = 1; i <= 10; i++) {
         let coffeeCupImage = new Image();
         coffeeCupImage.src = `pics/coffee_pot${i}.png`;
       }
       coffeeCups.forEach(coffeeCup => {
+        console.log(coffeeCups, "cofcups");
         let newIdx = Math.floor((time / 100) % 10);
         coffeeCup.img = images[(coffeeCup.index + newIdx) % 10];
       });

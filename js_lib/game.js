@@ -33,7 +33,7 @@ class Game {
   }
 
   addCoffeeCups() {
-    for (let i = 0; i < GAME.NUM_COFFEE_CUPS; i++) {
+    for (let i = 0; i < Game.NUM_COFFEE_CUPS; i++) {
       this.add(new CoffeeCup({
         game: this,
       }))
@@ -73,11 +73,13 @@ class Game {
 
   checkCollisions() {
     const allObjects = this.allObjects();
+    console.log(allObjects, "allObjects");
     for (let i = 0; i < allObjects.length; i++) {
-      for (let j = 0; j < allObjects.length; i++) {
+      for (let j = 0; j < allObjects.length; j++) {
         const obj1 = allObjects[i];
+        console.log(obj1, "obj1");
         const obj2 = allObjects[j];
-
+        console.log(obj2, "obj2");
         if (obj1.isCollidedWith(obj2)) {
           const collision = obj1.collideWith(obj2);
           if (collision) return;
@@ -91,6 +93,7 @@ class Game {
     ctx.font="30px Sans-serif";
     let bg = new Image();
     bg.src = 'pics/start-bg.jpg'
+    console.log(bg, "bg");
     ctx.drawImage(bg, 0, 0);
 
     if (this.coders[0].coffeeCups > this.highScore) {
@@ -99,13 +102,16 @@ class Game {
     ctx.fillText('High Score: ' + this.highScore,Game.DIM_X - 235, 30);
     let cofCupImg = new Image();
     cofCupImg.src = 'pics/coffee_pot.png'
+    ctx.beginPath();
     ctx.drawImage(cofCupImg, Game.DIM_X - 150, 45);
 
     ctx.fillText(' x ' + this.coders[0].coffeeCups,Game.DIM_X - 100, 80);
 
     let clockImg = new Image();
+    console.log(clockImg, "clockimg");
     clockImg.src = 'pics/clock.png'
     ctx.drawImage(clockImg, 20, 0);
+
 
     this.remainTime = Math.round((gameLeftTime) * 100) / 100;
     if (this.remainTime < 0.01) {
@@ -116,6 +122,7 @@ class Game {
     this.allObjects().forEach((object) => {
       object.draw(ctx, object.img);
     });
+    console.log(gameLeftTime, "GLT");
   }
 
   isOutOfBounds(pos) {

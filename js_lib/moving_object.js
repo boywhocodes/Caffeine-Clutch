@@ -18,6 +18,9 @@ class MovingObject {
   }
 
   draw(ctx, img) {
+
+    console.log(ctx, "ctx");
+    console.log(img, "img");
     ctx.drawImage(img, this.pos[0], this.pos[1]);
   }
 

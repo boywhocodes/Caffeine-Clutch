@@ -152,6 +152,9 @@ var MovingObject = function () {
   }, {
     key: "draw",
     value: function draw(ctx, img) {
+
+      console.log(ctx, "ctx");
+      console.log(img, "img");
       ctx.drawImage(img, this.pos[0], this.pos[1]);
     }
   }, {
@@ -229,7 +232,8 @@ var Coder = function (_MovingObject) {
     _classCallCheck(this, Coder);
 
     options.img = new Image();
-    options.img.src = 'pics/coder1.png';
+    options.img.src = './pics/coder1.png';
+    console.log(options.img, "img");
     options.radius = Coder.RADIUS;
     options.vel = options.vel || [0, 0];
     options.color = options.color || randomColor();
@@ -475,7 +479,7 @@ var Game = function () {
   }, {
     key: "addCoffeeCups",
     value: function addCoffeeCups() {
-      for (var i = 0; i < GAME.NUM_COFFEE_CUPS; i++) {
+      for (var i = 0; i < Game.NUM_COFFEE_CUPS; i++) {
         this.add(new CoffeeCup({
           game: this
         }));
@@ -520,11 +524,13 @@ var Game = function () {
     key: "checkCollisions",
     value: function checkCollisions() {
       var allObjects = this.allObjects();
+      console.log(allObjects, "allObjects");
       for (var i = 0; i < allObjects.length; i++) {
-        for (var j = 0; j < allObjects.length; i++) {
+        for (var j = 0; j < allObjects.length; j++) {
           var obj1 = allObjects[i];
+          console.log(obj1, "obj1");
           var obj2 = allObjects[j];
-
+          console.log(obj2, "obj2");
           if (obj1.isCollidedWith(obj2)) {
             var collision = obj1.collideWith(obj2);
             if (collision) return;
@@ -539,6 +545,7 @@ var Game = function () {
       ctx.font = "30px Sans-serif";
       var bg = new Image();
       bg.src = 'pics/start-bg.jpg';
+      console.log(bg, "bg");
       ctx.drawImage(bg, 0, 0);
 
       if (this.coders[0].coffeeCups > this.highScore) {
@@ -547,11 +554,13 @@ var Game = function () {
       ctx.fillText('High Score: ' + this.highScore, Game.DIM_X - 235, 30);
       var cofCupImg = new Image();
       cofCupImg.src = 'pics/coffee_pot.png';
+      ctx.beginPath();
       ctx.drawImage(cofCupImg, Game.DIM_X - 150, 45);
 
       ctx.fillText(' x ' + this.coders[0].coffeeCups, Game.DIM_X - 100, 80);
 
       var clockImg = new Image();
+      console.log(clockImg, "clockimg");
       clockImg.src = 'pics/clock.png';
       ctx.drawImage(clockImg, 20, 0);
 
@@ -564,6 +573,7 @@ var Game = function () {
       this.allObjects().forEach(function (object) {
         object.draw(ctx, object.img);
       });
+      console.log(gameLeftTime, "GLT");
     }
   }, {
     key: "isOutOfBounds",
@@ -697,7 +707,7 @@ var MilkGlass = function (_MovingObject) {
     _this.isWrappable = false;
     _this.startTime = 0;
     _this.emptyCoffeeCup = new Image();
-    _this.emptyCoffeeCup.src = 'sprites/white_mug.png';
+    _this.emptyCoffeeCup.src = 'pics/white_mug.png';
     _this.bumpAudio = new Audio('sounds/bump.wav');
     return _this;
   }
@@ -782,6 +792,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+// const Game = require("./game");
+
 var GameView = function () {
   function GameView(game, ctx) {
     _classCallCheck(this, GameView);
@@ -812,50 +824,50 @@ var GameView = function () {
       var _this = this;
 
       var coder = this.coder;
-      console.log(coder, "coder");
-      $(".start").click(function () {
+      // console.log(coder, "coder");
+      $("#start").click(function () {
         _this.paused = false;
-        $('.start-bg').hide();
-        $('.start').hide();
-        $('.intro').hide();
-        $('.five-sec').hide();
-        $('.game-canvas').show();
-        _this.game.mainAudio.play();
+        $('#start-bg').hide();
+        $('#start').hide();
+        $('#intro').hide();
+        $('#five-sec').hide();
+        $('#game-canvas').show();
+        // this.game.mainAudio.play();
       });
-      $('.restart').click(function () {
+      $('#restart').click(function () {
         _this.reset();
-        $('.start-bg').show();
-        $('.start').show();
-        $('.intro').show();
-        $('.pause').hide();
-        $('.restart').hide();
-        $('.five-sec').hide();
-        $('.game-canvas').hide();
+        $('#start-bg').show();
+        $('#start').show();
+        $('#intro').show();
+        $('#pause').hide();
+        $('#restart').hide();
+        $('#five-sec').hide();
+        $('#game-canvas').hide();
         _this.game.mainAudio.load();
       });
-      $('.game-over').click(function () {
+      $('#game-over').click(function () {
         _this.reset();
-        $('.start-bg').show();
-        $('.start').show();
-        $('.intro').show();
-        $('.pause').hide();
+        $('#start-bg').show();
+        $('#start').show();
+        $('#intro').show();
+        $('#pause').hide();
         $('restart').hide();
-        $('.game-canvas').hide();
-        $('.five-sec').hide();
-        $('.game-over').hide();
+        $('#game-canvas').hide();
+        $('#five-sec').hide();
+        $('#game-over').hide();
         _this.game.mainAudio.load();
       });
       $('html').keydown(function (event) {
         if (event.which == 80) {
           _this.paused = !_this.paused;
           if (_this.paused) {
-            $('.pause').show();
-            $('.restart').show();
+            $('#pause').show();
+            $('#restart').show();
             _this.game.mainAudio.pause();
             _this.pauseAudio.play();
           } else {
-            $('.pause').hide();
-            $('.restart').hide();
+            $('#pause').hide();
+            $('#restart').hide();
             _this.game.mainAudio.play();
           }
         }
@@ -891,7 +903,7 @@ var GameView = function () {
       if (this.gameLeftTime < 0.01) {
         this.paused = true;
         this.game.mainAudio.load();
-        $('.game-over').show();
+        $('#game-over').show();
       }
     }
   }, {
@@ -913,7 +925,7 @@ var GameView = function () {
   }, {
     key: "wakeUpCoder",
     value: function wakeUpCoder(timeDelta) {
-      console.log(wakeUpTime, "wakeUpTime");
+      console.log(this.wakeUpTime, "wakeUpTime");
       if (this.coder.bumped) {
         this.wakeUpTime += timeDelta;
       }
@@ -1011,13 +1023,14 @@ var GameView = function () {
   }, {
     key: "coffeeCupAnimate",
     value: function coffeeCupAnimate(time) {
-      var coffeeCups = this.game.coins;
+      var coffeeCups = this.game.coffeeCups;
       var images = [];
       for (var i = 1; i <= 10; i++) {
         var coffeeCupImage = new Image();
         coffeeCupImage.src = "pics/coffee_pot" + i + ".png";
       }
       coffeeCups.forEach(function (coffeeCup) {
+        console.log(coffeeCups, "cofcups");
         var newIdx = Math.floor(time / 100 % 10);
         coffeeCup.img = images[(coffeeCup.index + newIdx) % 10];
       });
