@@ -3,7 +3,7 @@ class GameView {
     this.ctx = ctx;
     this.game = game;
     this.addTimeAudio = new Audio("sounds/one-up.wav");
-    this.pauseAudio = new Audio("sounds/pause.wav");
+    this.pauseAudio = new Audio("sounds/pause.mp3");
     this.reset();
   }
 
@@ -21,49 +21,50 @@ class GameView {
 
   bindKeyHandlers() {
     const coder = this.coder;
-    $("#start").click(() => {
+    console.log(coder, "coder");
+    $(".start").click(() => {
       this.paused = false;
-      $('#start-bg').hide();
-      $('#start').hide();
-      $('#intro').hide();
-      $('#five-sec').hide();
-      $('#game-canvas').show();
+      $('.start-bg').hide();
+      $('.start').hide();
+      $('.intro').hide();
+      $('.five-sec').hide();
+      $('.game-canvas').show();
       this.game.mainAudio.play();
     });
-    $('#restart').click(() => {
+    $('.restart').click(() => {
       this.reset();
-      $('#start-bg').show();
-      $('#start').show();
-      $('#intro').show();
-      $('#pause').hide();
-      $('#restart').hide();
-      $('#five-sec').hide();
-      $('#game-canvas').hide();
+      $('.start-bg').show();
+      $('.start').show();
+      $('.intro').show();
+      $('.pause').hide();
+      $('.restart').hide();
+      $('.five-sec').hide();
+      $('.game-canvas').hide();
       this.game.mainAudio.load();
     });
-    $('#game-over').click(() => {
+    $('.game-over').click(() => {
       this.reset();
-      $('#start-bg').show();
-      $('#start').show();
-      $('#intro').show();
-      $('#pause').hide();
+      $('.start-bg').show();
+      $('.start').show();
+      $('.intro').show();
+      $('.pause').hide();
       $('restart').hide();
-      $('#game-canvas').hide();
-      $('#five-sec').hide();
-      $('#game-over').hide();
+      $('.game-canvas').hide();
+      $('.five-sec').hide();
+      $('.game-over').hide();
       this.game.mainAudio.load();
     });
     $('html').keydown(event => {
       if (event.which == 80) {
         this.paused = !this.paused;
         if (this.paused) {
-          $('#pause').show();
-          $('#restart').show();
+          $('.pause').show();
+          $('.restart').show();
           this.game.mainAudio.pause();
           this.pauseAudio.play();
         } else {
-          $('#pause').hide();
-          $('#restart').hide();
+          $('.pause').hide();
+          $('.restart').hide();
           this.game.mainAudio.play();
         }
       }
@@ -90,14 +91,14 @@ class GameView {
       this.game.draw(this.ctx, this.gameLeftTime);
     }
     this.lastTime = time;
-    console.log(time, "time");
-    console.log(timeDelta, "time-delta");
+    // console.log(time, "time");
+    // console.log(timeDelta, "time-delta");
     //every call to animate requests another call to animate
     requestAnimationFrame(this.animate.bind(this));
     if (this.gameLeftTime < 0.01) {
       this.paused = true;
       this.game.mainAudio.load();
-      $('#game-over').show();
+      $('.game-over').show();
     }
   }
 
@@ -129,21 +130,21 @@ class GameView {
 
   coderAnimate(time) {
     this.coderL1 = new Image();
-    this.coderL1.src = 'sprites/coderL1.png';
+    this.coderL1.src = 'pics/coderL1.png';
     this.coderL2 = new Image();
-    this.coderL2.src = 'sprites/coderL2.png';
+    this.coderL2.src = 'pics/coderL2.png';
     this.coderL3 = new Image();
-    this.coderL3.src = 'sprites/coderL3.png';
+    this.coderL3.src = 'pics/coderL3.png';
     this.coderR1 = new Image();
-    this.coderR1.src = 'sprites/coderR1.png';
+    this.coderR1.src = 'pics/coderR1.png';
     this.coderR2 = new Image();
-    this.coderR2.src = 'sprites/coderR2.png';
+    this.coderR2.src = 'pics/coderR2.png';
     this.coderR3 = new Image();
-    this.coderR3.src = 'sprites/coderR3.png';
+    this.coderR3.src = 'pics/coderR3.png';
     this.coderRj = new Image();
-    this.coderRj.src = 'sprites/coderRj.png';
+    this.coderRj.src = 'pics/coderRj.png';
     this.coderLj = new Image();
-    this.coderLj.src = 'sprites/coderLj.png';
+    this.coderLj.src = 'pics/coderLj.png';
 
     if (this.coder.bumped) {
       if (this.coder.facingRight) {
@@ -217,7 +218,7 @@ class GameView {
       let images = [];
       for (let i = 1; i <= 10; i++) {
         let coffeeCupImage = new Image();
-        coffeeCupImage.src = `sprites/coffeeCup${i}.png`;
+        coffeeCupImage.src = `pics/coffee_pot${i}.png`;
       }
       coffeeCups.forEach(coffeeCup => {
         let newIdx = Math.floor((time / 100) % 10);

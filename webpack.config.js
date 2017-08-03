@@ -5,8 +5,8 @@ module.exports = {
   context: __dirname,
   entry: "./js_lib/caffeine_clutch.js",
   output: {
-    path: path.resolve(__dirname, 'js'),
-    filename: "./js_lib/bundle.js"
+    path: path.resolve(__dirname, 'js_lib'),
+    filename: "./bundle.js"
   },
   module: {
     loaders: [

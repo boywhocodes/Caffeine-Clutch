@@ -8,5 +8,6 @@ document.addEventListener("DOMContentLoaded", function(){
   const ctx = canvasEl.getContext("2d");
   const game = new Game();
   let gameView = new GameView(game, ctx);
+  
   gameView.start();
 });
